@@ -53,7 +53,7 @@ const CharityData = () => {
        <th scope="row">{index + 1}</th>
        <td>{charity.title}</td>
        <td>{charity.percent}</td>
-       <td>{charity.image}</td>
+       <td>{charity.selectedFile}</td>
        
        <td>
     
@@ -68,15 +68,12 @@ const CharityData = () => {
  
  </tbody>
 </table>
-    
-   </div>
-
-
-
-
-
-   </div>
-  )
+</div>
+</div>
+)
 }
+  
 
-export default CharityData;
+
+
+export default CharityData

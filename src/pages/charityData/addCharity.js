@@ -2,7 +2,7 @@ import {React, useState} from 'react';
 import {useRouter} from 'next/router';
 import FileBase from 'react-file-base64';
 import axios from 'axios';
-
+import Image from 'next/image'
 
 
 const AddCharity = () => {
@@ -11,10 +11,13 @@ const AddCharity = () => {
   const router = useRouter()
   const [charity, setCharity]= useState({});
 
-  // console.log(slider)
+  //file
+  // const [image, setImage] = useState(null);
+  // const [createObjectURL, setCreateObjectURL] = useState(null);
+  //file
   
 
-  const {image,percent, title} = charity;
+  const {selectedFile,percent, title} = charity;
 
   const inputChange = e => {
         setCharity({...charity, [e.target.name] : e.target.value})   
@@ -30,11 +33,32 @@ const AddCharity = () => {
     router.push('/');
   }
 
+
+  //file
+  // const uploadToServer = async (event) => {
+  //   const body = new FormData();
+  //   body.append("file", image);
+  //   const response = await fetch("http://localhost:5000/api/v1/charity", {
+  //     method: "POST",
+  //     body
+  //   });
+  // };
+
+  // const uploadToClient = (event) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const i = event.target.files[0];
+
+  //     setImage(i);
+  //     setCreateObjectURL(URL.createObjectURL(i));
+  //   }
+  // };
+
   return (
    <div>
-     <button  className='btn btn-outline-primary mx-2 my-5'>Back To Home</button>
     
 
+     <button  className='btn btn-outline-primary mx-2 my-5'>Back To Home</button>
+     
    <form onSubmit={onSubmit}>
    <div className='container border shadow pb-5 pt-5 my-5'>
        <h1 className='text-center mb-5'>Add Charity</h1>
@@ -50,11 +74,12 @@ const AddCharity = () => {
       <FileBase 
                type='file'
                name='image'
-               value={image}
+               value={selectedFile}
                multiple= {false}
                onChange={inputChange}
                onDone={({base64}) => setCharity({...charity, selectedFile: base64})}
             />
+
 
       </div>
       

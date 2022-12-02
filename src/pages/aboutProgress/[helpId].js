@@ -11,7 +11,7 @@ const EditHelp = () => {
   const helpId = router.query.helpId;
   const [helps, setHelps]= useState({});
 
-  const {title,description,bgImage,point} = helps;
+  const {percentage,title,donar} = helps;
 
   const inputChange = e => {
         setHelps({...helps, [e.target.name] : e.target.value})   
@@ -21,7 +21,7 @@ const EditHelp = () => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    await axios.patch(`http://localhost:5000/api/v1/helpingOne/${helpId}`, helps)
+    await axios.patch(`http://localhost:5000/api/v1/progress/${helpId}`, helps)
     
     
     router.push('/');
@@ -30,11 +30,10 @@ const EditHelp = () => {
   return (
     <div>
        
-       title,description,bgImage,point
-
+       
        <form onSubmit={onSubmit}>
    <div className='container border shadow pb-5 pt-5 my-5'>
-       <h1 className='text-center mb-5'>Edit Helping outline</h1>
+       <h1 className='text-center mb-5'>Add </h1>
        <div className="form-floating mb-3">
          <input type="text" className="form-control" id="floatingInput" name="title" value={title} onChange={inputChange}/>
          <label htmlFor="floatingInput">Title</label>
@@ -42,27 +41,17 @@ const EditHelp = () => {
      
       
       <div  div className="form-floating my-3">
-       <input type="text" className="form-control" id="floatingPassword" name="description" value={description}  onChange={inputChange}/>
-       <label htmlFor="floatingPassword">Description</label>
+       <input type="text" className="form-control" id="floatingPassword" name="percentage" value={percentage}  onChange={inputChange}/>
+       <label htmlFor="floatingPassword">Percentage</label>
       </div>
       <div  div className="form-floating my-3">
-       <input type="text" className="form-control" id="floatingPassword" name="point" value={point}  onChange={inputChange}/>
-       <label htmlFor="floatingPassword">Point</label>
+       <input type="text" className="form-control" id="floatingPassword" name="donar" value={donar}  onChange={inputChange}/>
+       <label htmlFor="floatingPassword">Donar</label>
       </div>
+     
     
       
-      <div className='py-2'>
-      <FileBase 
-               type='file'
-               name='bgImage'
-               value={bgImage}
-               multiple= {false}
-               onChange={inputChange}
-               onDone={({base64}) => setHelps({...helps, bgImage: base64})}
-            />
-
-
-      </div>
+    
       
      
       <button type='submit' className='m-5 btn btn-success'>Submit</button>

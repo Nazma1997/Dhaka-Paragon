@@ -39,7 +39,7 @@ const CharityData = () => {
      <th scope="col">ID</th>
      <th scope="col">Title</th>
      <th scope="col">Percentage</th>
-     <th scope='col'>Image</th>
+     {/* <th scope='col'>Image</th> */}
      <th scope='col'>Actions</th>
     
    </tr>
@@ -53,7 +53,7 @@ const CharityData = () => {
        <th scope="row">{index + 1}</th>
        <td>{charity.title}</td>
        <td>{charity.percent}</td>
-       <td>{charity.selectedFile}</td>
+       {/* <td>{charity.selectedFile}</td> */}
        
        <td>
     
